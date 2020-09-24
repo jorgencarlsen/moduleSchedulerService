@@ -1,1 +1,1 @@
-user = {}
+const user = {};
