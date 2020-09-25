@@ -16,15 +16,6 @@ const bucketParams = {
   Bucket: 'realiaagentimages',
 };
 
-// https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/s3-example-creating-buckets.html
-// Call S3 to obtain a list of the objects in the bucket
-// s3.listObjects(bucketParams, (err, data) => {
-//   if (err) {
-//     console.log("Error", err);
-//   } else {
-//     console.log("Success: ", data);
-//   }
-// });
 
 const createData = (num) => {
   const agentTypes = ['Listing Agent', 'Premier Agent'];
