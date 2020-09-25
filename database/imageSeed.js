@@ -6,10 +6,9 @@ const fs = require('fs');
 
 const url = [];
 // 100 fake avatar url from fakter
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 100; i++) {
   url.push(faker.image.avatar());
 }
-
 
 // download 100 user photoes to local image folder
 for (let i = 0; i < url.length; i++) {

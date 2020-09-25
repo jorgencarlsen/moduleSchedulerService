@@ -1,14 +1,39 @@
+// Load the SDK for JavaScript
+const AWS = require('aws-sdk');
 const faker = require('faker');
 const { saveAgentData } = require('.');
+
+AWS.config.loadFromPath('./config.json');
+
+// Set the Region
+AWS.config.update({ region: 'us-west-2' });
+
+// Create S3 service object
+const s3 = new AWS.S3({apiVersion: '2006-03-01'});
+
+// Create the parameters for calling listObjects
+const bucketParams = {
+  Bucket: 'realiaagentimages',
+};
+
+// https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/s3-example-creating-buckets.html
+// Call S3 to obtain a list of the objects in the bucket
+// s3.listObjects(bucketParams, (err, data) => {
+//   if (err) {
+//     console.log("Error", err);
+//   } else {
+//     console.log("Success: ", data);
+//   }
+// });
 
 const createData = (num) => {
   const agentTypes = ['Listing Agent', 'Premier Agent'];
   const propertyIdArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  for (let i = 100; i < num + 100; i++) {
+  for (let i = 0; i < num; i++) {
     const data = {};
     data.agentId = i;
     data.name = faker.name.findName();
-    data.picture = faker.image.imageUrl();
+    data.picture = `https://realiaagentimages.s3-us-west-1.amazonaws.com/${i}.jpg`;
     data.phone = faker.phone.phoneNumber();
     data.email = faker.internet.email();
     data.agentType = agentTypes[Math.floor(Math.random() * agentTypes.length)];
