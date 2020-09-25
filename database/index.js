@@ -11,7 +11,7 @@ const userSchema = mongoose.Schema({
   // userId: { type: Number, unique: true },
   name: String,
   phone: String,
-  email: { type: String, unique: true },
+  email: String,
   tourType: String,
   interestProprties: [],
   finInterest: Boolean,
@@ -23,13 +23,13 @@ const userSchema = mongoose.Schema({
 
 
 const agentSchema = mongoose.Schema({
-  agentId: { type: Number, unique: true },
+  agentId: Number,
   name: String,
   picture: String,
   phone: String,
   email: String,
   agentType: String,
-  proprtyIds: [],
+  propertyIds: [],
   recSalesCount: Number,
   avgRating: Number,
   ratingCount: Number,
@@ -39,43 +39,32 @@ const User = mongoose.model('User', userSchema);
 const Agent = mongoose.model('Agent', agentSchema);
 
 const saveAgentData = (data) => {
-  const agentData = new Agent(data);
-  agentData.save((err, res) => {
-  // agentData.update({upsert: true}, (err, res) => {
+  // const agentData = new Agent(data);
+  // agentData.save((err, res) => {
+  Agent.findOneAndUpdate({ agentId: data.agentId }, data, { upsert: true }, (err, res) => {
     if (err) {
       throw err;
     } else {
-      console.log(res);
+      console.log(data);
     }
   });
-
-  // Repo.findOne({repo_Id: data.repo_Id}, (err , example) => {
-  //   if (err) console.log(err);
-  //   if (example) {
-  //     console.log('already saved')
-  //   } else {
-  //     console.log(data)
-  //     var repoData = new Repo(data);
-  //     repoData.save()
-  //   }
-  // })
 };
 
 const saveUserData = (data) => {
-  const userData = new User(data);
+  // const userData = new User(data);
   // userData.update({upsert: true}, (err, res) => {
-  userData.save((err, res) => {
+  User.findOneAndUpdate({ email: data.email }, data, { upsert: true }, (err, res) => {
     if (err) {
       throw err;
     } else {
-      console.log(res);
+      console.log(data);
     }
   });
 };
 
 const getAgentData = (callback) => {
   console.log(1);
-  Agent.find({}, function (err, docs) {}).sort({ avgRating: -1 }).limit(4)
+  Agent.find({}, (err, docs) => {}).sort({ avgRating: -1 }).limit(4)
   .then((data) => callback(data));
 
 };

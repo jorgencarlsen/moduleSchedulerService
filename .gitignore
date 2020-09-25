@@ -24,3 +24,7 @@ coverage
 build/
 dist/
 
+#images
+database/images/
+config.json
+
