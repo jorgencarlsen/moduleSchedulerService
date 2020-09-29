@@ -4,10 +4,9 @@
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/Realia-130/moduleLanding
+  - https://github.com/Realia-130/moduleSimilarListings
+  - https://github.com/Realia-130/moduleAffordabilityWidget
 
 ## Table of Contents
 
