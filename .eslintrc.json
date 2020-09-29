@@ -23,5 +23,13 @@
         "react"
     ],
     "rules": {
+    },
+    "import/resolver": {
+        "node": {
+            "extensions": [
+                ".js",
+                ".jsx"
+            ]
+        }
     }
 }
