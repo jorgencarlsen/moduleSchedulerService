@@ -12,6 +12,7 @@ class AgentInfo extends React.Component {
     // this.getTop = this.getTop.bind(this);
   }
 
+
   render() {
     return (
       <div style={{border: '1px solid black'}}>
