@@ -10,7 +10,7 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 
 app.post('/api/userschedule', (req, res) => {
-  // console.log(req.body)
+  console.log(req.body)
   saveUserData(req.body);
   res.status(200).send('added user');
 });
@@ -20,24 +20,26 @@ app.get('/api/agentInfo', (req, res) => {
   getAgentData((data) => res.status(200).send(data));
 });
 
-app.put('/api/userschedule', (req, res) => {
-  // console.log(req.body)
-  // saveUserData(req.body);
-  // res.status(200).send();
+// app.put('/api/userschedule', (req, res) => {
+//   // console.log(req.body)
+//   // saveUserData(req.body);
+//   // res.status(200).send();
+// });
+
+app.put('/api/userMessage', (req, res) => {
+  console.log(req.body)
+  saveUserData(req.body);
+  res.status(200).send('added user message');
 });
 
-app.patch('/api/userschedule', (req, res) => {
+// app.delete('/api/userschedule', (req, res) => {
 
-});
+// });
 
-app.delete('/api/userschedule', (req, res) => {
-
-});
-
-app.put('/api/agentInfo', (req, res) => {
-  // TODO - your code here!;
-  // getAgentData((data) => res.status(200).send(data));
-});
+// app.put('/api/agentInfo', (req, res) => {
+//   // TODO - your code here!;
+//   // getAgentData((data) => res.status(200).send(data));
+// });
 
 const port = 3000;
 

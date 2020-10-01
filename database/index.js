@@ -13,9 +13,11 @@ const userSchema = mongoose.Schema({
   phone: String,
   email: String,
   tourType: String,
+  message: String,
+  selectedAgentId: String,
   interestProprties: [],
   finInterest: Boolean,
-  scheduledDate: Date,
+  scheduledDate: String,
   joinedDate: Date,
   contactedAgents: [],
   // owner: {login_handle : {type: String}, login_id : {type: Number}, url: {type: String}}
@@ -63,7 +65,6 @@ const saveUserData = (data) => {
 };
 
 const getAgentData = (callback) => {
-  console.log(1);
   Agent.find({}, (err, docs) => {}).sort({ avgRating: -1 }).limit(4)
   .then((data) => callback(data));
 
