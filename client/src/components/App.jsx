@@ -11,10 +11,12 @@ const Container = styled.div`
     border-style: solid;
     border-color: transparent;
     border-width: 16px 8px 0px;
-    width: 75%;
+    width: 50%;
     -webkit-box-flex: 0;
     flex: 0 0 auto;
     display: block;
+    outline: none;
+    box-sizing: border-box;
     font-family: TruliaSans, system, -apple-system, Roboto, "Segoe UI Bold", Arial, sans-serif;
     color: rgb(59, 65, 68);
     font-size: 16px;

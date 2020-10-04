@@ -37,6 +37,13 @@ const TourTypeButton = styled.button`
     text-shadow: none;
     align-items: flex-start;
     border-image: initial;
+
+    &:hover {
+
+
+
+    }
+
 `;
 
 class ScheduleATour extends React.Component {
@@ -45,10 +52,12 @@ class ScheduleATour extends React.Component {
     this.state = {
       tourType: 'In-Person',
       displayDates: [],
+      isShown: false,
     };
     this.handlePersonClick = this.handlePersonClick.bind(this);
     this.handleVideoClick = this.handleVideoClick.bind(this);
     this.createDates = this.createDates.bind(this);
+    this.handleHover = this.handleHover.bind(this);
   }
 
   handlePersonClick() {
@@ -57,6 +66,10 @@ class ScheduleATour extends React.Component {
 
   handleVideoClick() {
     this.setState({tourType: 'Video chat'});
+  }
+
+  handleHover() {
+    this.setState({isShown: !this.state.isShown})
   }
 
   createDates() {
@@ -86,18 +99,28 @@ class ScheduleATour extends React.Component {
   render() {
     return (
       <div style={{border: '1px solid black'}}>
-        Schedule A Tour
-        <br></br>
+      {/* <div> */}
+        <div onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
         Tour Type?
+        </div>
+        {this.state.isShown && (
+        <div>
         <p>
         onHover: If you’d like to tour this home without leaving /n yours, select the virtual tour type /n  and discuss available options with the agent you are /n connected with.
         </p>
+        </div>
+        )}
+        <div>
         <TourTypeButton onClick={this.handlePersonClick}>In-Person</TourTypeButton>
         <TourTypeButton onClick={this.handleVideoClick}>Video Chat</TourTypeButton>
-        {/* <button onClick={this.handlePersonClick}>In-Person</button> */}
-        {/* <button onClick={this.handleVideoClick}>Video Chat</button> */}
+        </div>
+        <br></br>
+        <div>
         <DateSelect days={this.state.displayDates} type={this.state.tourType}/>
+        </div>
+        <div>
         <HealthAdvisory/>
+        </div>
       </div>
     );
   }
