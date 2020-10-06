@@ -17,8 +17,8 @@ class RequestInfo extends React.Component {
 
   render() {
     return (
-      <div style={{border: '1px solid black'}}>
-      {/* <div> */}
+      // <div style={{border: '1px solid black'}}>
+      <div>
         <UserInputMessage />
         <StatuatoryMessage />
         <AgentInfo />
